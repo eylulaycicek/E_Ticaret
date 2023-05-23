@@ -1,0 +1,58 @@
+﻿﻿@model IEnumerable<E_Ticaret.Models.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ürünler</h2>
+
+<p>
+    @Html.ActionLink(" Yeni Kayıt", "Create", null, new { @class = "btn btn-sm btn-primary bi bi-pencil-square  " })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </th>
+        <th>
+            Resim
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAciklamasi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunFiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAdi)
+            </td>
+            <td>
+                <img src="~/Resim/@(item.UrunId).jpg" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAciklamasi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunFiyati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategoriler.KategoriAdi)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.UrunId }, new { @class = "btn btn-sm btn-outline-success bi bi-pencil-square  " })
+                @Html.ActionLink(" ", "Details", new { id = item.UrunId }, new { @class = "btn btn-sm btn-outline-warning bi bi-ticket" })
+                @Html.ActionLink(" ", "Delete", new { id = item.UrunId }, new { @class = "btn btn-sm btn-outline-danger bi bi-trash" })
+            </td>
+        </tr>
+    }
+
+</table>

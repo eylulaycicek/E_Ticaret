@@ -1,0 +1,42 @@
+﻿﻿@using E_Ticaret.Models
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<main>
+
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
+            <h2 id="gettingStartedTitle">Kategoriler</h2>
+            <ul>
+                @foreach (var item in (List<Kategoriler>)ViewBag.KategoriListesi)
+                {
+                    <li>
+                       @Html.ActionLink(item.KategoriAdi, "Kategori", new { id = item.KategoriId }) 
+                    </li>
+                }
+            </ul>
+        </section>
+        <section class="col-md-8" aria-labelledby="librariesTitle">
+            <h2 id="librariesTitle">Ürünler</h2>
+            <div class="row">
+                @foreach (var item in (List<Urunler>)ViewBag.UrunListesi)
+                {
+                    <div class="col-md-4" style="border:1px solid">
+                        <h5>@item.UrunAdi</h5>
+                        <img src="~/Resim/@(item.UrunId).jpg" width="100" />
+                        <br /><br />
+                        <p>
+                            <a href="/Home/Urun/@item.UrunId" class="btn btn-secondary">Ürün Detay &raquo;</a>
+                            <span style="font-size:14px;font-weight:bold;float:right">@item.UrunFiyati TL</span>
+                        </p>
+                    </div>
+
+                }
+
+            </div>
+
+        </section>
+
+    </div>
+</main>

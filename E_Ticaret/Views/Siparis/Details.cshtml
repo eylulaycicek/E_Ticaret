@@ -1,0 +1,46 @@
+﻿@model IEnumerable<E_Ticaret.Models.SiparisDetay>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdetBilgisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToplamTutar)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Urunler.UrunAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdetBilgisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamTutar)
+        </td>    
+        <td>
+            @Html.DisplayFor(modelItem => item.Urunler.UrunAdi)
+        </td>
+        <td>
+         
+            @Html.ActionLink("Details", "Details", new { id=item.SiparisDetayId }) |
+           
+        </td>
+    </tr>
+}
+
+</table>
